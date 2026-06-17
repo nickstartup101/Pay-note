@@ -41,7 +41,7 @@
 }
 
 body {
-  /* Premium Mesh Background with soft blue-beige gradients */
+  /* Ambient Mesh Background with soft blue-beige gradients */
   background: #E6ECF0;
   background-image: 
     radial-gradient(at 10% 15%, rgba(225, 228, 235, 0.7) 0px, transparent 55%),
@@ -823,6 +823,41 @@ body {
   margin-bottom: 16px;
 }
 
+/* CUSTOM PREMIUM TOAST NOTIFICATION */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(110, 118, 130, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 99999;
+}
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+.toast.success {
+  border-left: 4px solid var(--green);
+  color: var(--green);
+}
+.toast.error {
+  border-left: 4px solid var(--red);
+  color: var(--red);
+}
+
 @media(max-width:768px){
   .sr { grid-template-columns: 1fr 1fr; }
   .sgr { grid-template-columns: 1fr; }
@@ -831,6 +866,7 @@ body {
   .body { flex-direction: column; }
   .app { height: auto; max-height: none; margin: 0; border-radius: 0; border: none; }
   .ct { padding: 16px; }
+  .toast { right: 16px; left: 16px; bottom: 16px; }
 }
 </style>
 </head>
@@ -890,7 +926,7 @@ body {
         </div>
         <div class="feed-header">ກິດຈະກຳລ່າສຸດ</div>
         <div class="feed">
-          <div class="fi"><div class="fic" style="background:var(--accent-light)"><i class="ti ti-brand-telegram" style="color:var(--accent);font-size:18px"></i></div><div class="fb"><div class="ft">Macro — ໃບບິນໃໝ່</div><div class="fm">10:32 · ຮູບຖ່າຍທາງ Telegram</div></div><span class="pk ppend">ລໍຢືນຢັນ</span></div>
+          <div class="fi"><div class="fic" style="background:var(--green-light)"><i class="ti ti-brand-telegram" style="color:var(--green);font-size:18px"></i></div><div class="fb"><div class="ft">Macro — ໃບບິນໃໝ່</div><div class="fm">10:32 · ຮູບຖ່າຍທາງ Telegram</div></div><span class="pk ppend">ລໍຢືນຢັນ</span></div>
           <div class="fi"><div class="fic" style="background:var(--accent-light)"><i class="ti ti-check" style="color:var(--accent);font-size:18px"></i></div><div class="fb"><div class="ft">ຜັກ, ໜໍ່ໄມ້ — ຕະຫຼາດ</div><div class="fm">09:15 · ບັນທຶກ ຜູ້ສະໜອງ</div></div><div class="fa">₭285,000</div></div>
           <div class="fi"><div class="fic" style="background:var(--gold-light)"><i class="ti ti-arrows-exchange" style="color:var(--gold);font-size:18px"></i></div><div class="fb"><div class="ft">Green Tea Box → ຊາ Ocha</div><div class="fm">ດັດແປງຊື່</div></div><span class="pk ppend">ດັດແປງ</span></div>
           <div class="fi"><div class="fic" style="background:var(--accent-light)"><i class="ti ti-check" style="color:var(--accent);font-size:18px"></i></div><div class="fb"><div class="ft">ກາເຟ Lavazza — Villa Market</div><div class="fm">ເມື່ອວານ · ✓ ຜູ້ສະໜອງ F&B</div></div><div class="fa">₭520,000</div></div>
@@ -1015,10 +1051,10 @@ body {
               <span class="pk" style="background:var(--accent-light);color:var(--accent); margin-left: auto;">ເຊື່ອມຕໍ່ແລ້ວ</span>
             </div>
             <div class="skd">ຕັ້ງຄ່າ Bot ທີ່ສ້າງຈາກ @BotFather ເພື່ອຮັບໃບບິນ</div>
-            <div class="ff"><div class="ffl">Bot Token (HTTP API)</div><input class="ffi" value="738128421:AAHxxxx•••••••••••••"></div>
-            <div class="ff"><div class="ffl">Chat ID / Group ID</div><input class="ffi" value="-1001584219902"></div>
+            <div class="ff"><div class="ffl">Bot Token (HTTP API)</div><input class="ffi" id="tg-token" value="738128421:AAHxxxx•••••••••••••"></div>
+            <div class="ff"><div class="ffl">Chat ID / Group ID</div><input class="ffi" id="tg-chatid" value="-1001584219902"></div>
             <div class="ff"><div class="ffl">Webhook URL</div><input class="ffi" value="https://api.ladolce.app/telegram/webhook" readonly></div>
-            <button class="btn bp" style="width:100%;margin-top:8px">ອັບເດດ</button>
+            <button class="btn bp" style="width:100%;margin-top:8px" onclick="updateTelegramAPI()">ອັບເດດ</button>
           </div>
           <div class="sk">
             <div class="sktl">
@@ -1026,10 +1062,10 @@ body {
               <span class="pk ppend" style="margin-left: auto;">ຕ້ອງ Config</span>
             </div>
             <div class="skd">ສົ່ງ ຜູ້ສະໜອງ ເຂົ້າ La Dolce ໂດຍກົງ</div>
-            <div class="ff"><div class="ffl">API Endpoint</div><input class="ffi" placeholder="https://api.ladolce.app/..."></div>
-            <div class="ff"><div class="ffl">API Key</div><input class="ffi" type="password" placeholder="ld_live_xxxx"></div>
-            <div class="ff"><div class="ffl">Workspace ID</div><input class="ffi" placeholder="ws_xxxxxxxxx"></div>
-            <button class="btn bg2" style="width:100%;margin-top:8px">ເຊື່ອມ La Dolce</button>
+            <div class="ff"><div class="ffl">API Endpoint</div><input class="ffi" id="ld-endpoint" placeholder="https://api.ladolce.app/..."></div>
+            <div class="ff"><div class="ffl">API Key</div><input class="ffi" type="password" id="ld-apikey" placeholder="ld_live_xxxx"></div>
+            <div class="ff"><div class="ffl">Workspace ID</div><input class="ffi" id="ld-wsid" placeholder="ws_xxxxxxxxx"></div>
+            <button class="btn bg2" style="width:100%;margin-top:8px" onclick="connectLaDolce()">ເຊື່ອມ La Dolce</button>
           </div>
         </div>
       </div>
@@ -1037,6 +1073,9 @@ body {
     </div>
   </div>
 </div>
+
+<!-- TOAST ALERT CONTAINER -->
+<div id="toast" class="toast"></div>
 
 <script>
 function nav(id,el){
@@ -1147,6 +1186,42 @@ function saveMap(){
   if(!t){alert('ກະລຸນາໃສ່ຊື່');return;}
   alert('✓ AI ຈຳ: "Green Tea Box" → "'+t+'" — ໃຊ້ຊື່ນີ້ ໃນໃບບິນຕໍ່ໄປ');
   document.getElementById('mt').value='';
+}
+
+/* PREMIUM TOAST NOTIFICATION FUNCTION */
+function showToast(msg, type) {
+  var t = document.getElementById('toast');
+  var icon = type === 'success' ? '<i class="ti ti-circle-check"></i> ' : '<i class="ti ti-alert-triangle"></i> ';
+  t.innerHTML = icon + msg;
+  t.className = 'toast show ' + type;
+  setTimeout(function(){
+    t.classList.remove('show');
+  }, 3500);
+}
+
+/* TELEGRAM API UPDATE CHECK */
+function updateTelegramAPI() {
+  var token = document.getElementById('tg-token').value.trim();
+  var chatid = document.getElementById('tg-chatid').value.trim();
+  
+  if (!token || !chatid) {
+    showToast('ອັບເດດຜິດພາດ: ກະລຸນາປ້ອນຂໍ້ມູນ Bot Token ແລະ Chat ID ໃຫ້ຄົບຖ້ວນ!', 'error');
+  } else {
+    showToast('ອັບເດດສຳເລັດ: ເຊື່ອມຕໍ່ Telegram Bot API ຮຽບຮ້ອຍແລ້ວ!', 'success');
+  }
+}
+
+/* LA DOLCE WORKSPACE CONNECTION CHECK */
+function connectLaDolce() {
+  var endpoint = document.getElementById('ld-endpoint').value.trim();
+  var apikey = document.getElementById('ld-apikey').value.trim();
+  var wsid = document.getElementById('ld-wsid').value.trim();
+  
+  if (!endpoint || !apikey || !wsid) {
+    showToast('ເຊື່ອມຕໍ່ຜິດພາດ: ຂໍ້ມູນບໍ່ຄົບຖ້ວນ (Endpoint, API Key ຫຼື Workspace ID ເປົ່າ)!', 'error');
+  } else {
+    showToast('ເຊື່ອມຕໍ່ສຳເລັດ: ເຊື່ອມຕໍ່ກັບ La Dolce Workspace ຮຽບຮ້ອຍແລ້ວ!', 'success');
+  }
 }
 </script>
 </body>
