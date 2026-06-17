@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pay & Note — Telegram Premium Glass</title>
+<title>Pay & Note — Telegram Polling Glass</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
@@ -41,7 +41,7 @@
 }
 
 body {
-  /* Ambient Mesh Background with soft blue-beige gradients */
+  /* Premium Mesh Background with soft blue-beige gradients */
   background: #E6ECF0;
   background-image: 
     radial-gradient(at 10% 15%, rgba(225, 228, 235, 0.7) 0px, transparent 55%),
@@ -883,7 +883,7 @@ body {
       </div>
     </div>
     <div class="badges">
-      <div class="wb"><div class="wd"></div><i class="ti ti-brand-telegram" style="font-size:13px"></i> Telegram Bot ເຊື່ອມຕໍ່</div>
+      <div class="wb"><div class="wd"></div><i class="ti ti-brand-telegram" style="font-size:13px"></i> Telegram ພ້ອມເຊື່ອມຕໍ່</div>
       <div class="lb"><i class="ti ti-building-store" style="font-size:13px"></i> La Dolce</div>
     </div>
   </div>
@@ -926,7 +926,7 @@ body {
         </div>
         <div class="feed-header">ກິດຈະກຳລ່າສຸດ</div>
         <div class="feed">
-          <div class="fi"><div class="fic" style="background:var(--green-light)"><i class="ti ti-brand-telegram" style="color:var(--green);font-size:18px"></i></div><div class="fb"><div class="ft">Macro — ໃບບິນໃໝ່</div><div class="fm">10:32 · ຮູບຖ່າຍທາງ Telegram</div></div><span class="pk ppend">ລໍຢືນຢັນ</span></div>
+          <div class="fi"><div class="fic" style="background:var(--accent-light)"><i class="ti ti-brand-telegram" style="color:var(--accent);font-size:18px"></i></div><div class="fb"><div class="ft">Macro — ໃບບິນໃໝ່</div><div class="fm">10:32 · ຮູບຖ່າຍທາງ Telegram</div></div><span class="pk ppend">ລໍຢືນຢັນ</span></div>
           <div class="fi"><div class="fic" style="background:var(--accent-light)"><i class="ti ti-check" style="color:var(--accent);font-size:18px"></i></div><div class="fb"><div class="ft">ຜັກ, ໜໍ່ໄມ້ — ຕະຫຼາດ</div><div class="fm">09:15 · ບັນທຶກ ຜູ້ສະໜອງ</div></div><div class="fa">₭285,000</div></div>
           <div class="fi"><div class="fic" style="background:var(--gold-light)"><i class="ti ti-arrows-exchange" style="color:var(--gold);font-size:18px"></i></div><div class="fb"><div class="ft">Green Tea Box → ຊາ Ocha</div><div class="fm">ດັດແປງຊື່</div></div><span class="pk ppend">ດັດແປງ</span></div>
           <div class="fi"><div class="fic" style="background:var(--accent-light)"><i class="ti ti-check" style="color:var(--accent);font-size:18px"></i></div><div class="fb"><div class="ft">ກາເຟ Lavazza — Villa Market</div><div class="fm">ເມື່ອວານ · ✓ ຜູ້ສະໜອງ F&B</div></div><div class="fa">₭520,000</div></div>
@@ -940,7 +940,7 @@ body {
         <div class="wp">
           <div class="wh">
             <i class="ti ti-brand-telegram"></i>
-            <div><div class="wht">Pay &amp; Note Telegram Bot</div><div class="whs">Telegram Bot API · ພ້ອມຮັບຂໍ້ມູນ</div></div>
+            <div><div class="wht">Pay &amp; Note Telegram Bot</div><div class="whs" id="polling-status">Telegram Bot API · ພ້ອມຮັບຂໍ້ມູນ</div></div>
           </div>
           <div class="ca" id="ca">
             <div class="bb sys">ລະບົບ Telegram ພ້ອມຮັບໃບບິນ</div>
@@ -960,7 +960,7 @@ body {
                   <tr class="tot"><td colspan="2">ລວມທັງໝົດ</td><td class="nr">₭385,000</td></tr>
                 </tbody>
               </table>
-              <div style="font-size:12px;color:rgba(255,255,255,0.9);margin-bottom:8px">ຂໍ້ມູນຂ້າງເທິງຖືກຕ້ອງບໍ?</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.9);margin-bottom:8px"><b>[DEMO]</b> ຂໍ້ມູນຂ້າງເທິງຖືກຕ້ອງບໍ? (ພິມ "ຢືນຢັນ" ໃນຊ່ອງແຊັດ)</div>
               <div class="cacts" id="cacts">
                 <button class="btn bg2" onclick="doConfirm()"><i class="ti ti-check"></i> ຢືນຢັນ</button>
                 <button class="btn bred" onclick="doEdit()"><i class="ti ti-edit"></i> ແກ້ໄຂ</button>
@@ -1043,18 +1043,18 @@ body {
       <!-- SETTINGS -->
       <div class="pg" id="pg-st">
         <div class="pt">ຕັ້ງຄ່າ API</div>
-        <div class="pd">ເຊື່ອມ Telegram Bot API ແລະ La Dolce Workspace</div>
+        <div class="pd">ເຊື່ອມ Telegram Bot API (ຜ່ານລະບົບ Polling) ແລະ La Dolce Workspace</div>
         <div class="sgr">
           <div class="sk">
             <div class="sktl">
-              <i class="ti ti-brand-telegram" style="color:var(--accent)"></i> Telegram Bot API
-              <span class="pk" style="background:var(--accent-light);color:var(--accent); margin-left: auto;">ເຊື່ອມຕໍ່ແລ້ວ</span>
+              <i class="ti ti-brand-telegram" style="color:var(--accent)"></i> Telegram Polling API
+              <span id="badge-polling" class="pk" style="background:var(--gold-light);color:var(--gold); margin-left: auto;">ລໍຖ້າເຊື່ອມຕໍ່</span>
             </div>
-            <div class="skd">ຕັ້ງຄ່າ Bot ທີ່ສ້າງຈາກ @BotFather ເພື່ອຮັບໃບບິນ</div>
-            <div class="ff"><div class="ffl">Bot Token (HTTP API)</div><input class="ffi" id="tg-token" value="738128421:AAHxxxx•••••••••••••"></div>
-            <div class="ff"><div class="ffl">Chat ID / Group ID</div><input class="ffi" id="tg-chatid" value="-1001584219902"></div>
-            <div class="ff"><div class="ffl">Webhook URL</div><input class="ffi" value="https://api.ladolce.app/telegram/webhook" readonly></div>
-            <button class="btn bp" style="width:100%;margin-top:8px" onclick="updateTelegramAPI()">ອັບເດດ</button>
+            <div class="skd">ລະບົບຈະຄອຍດຶງຂໍ້ມູນ (Polling) ຈາກ Telegram ໂດຍກົງທຸກໆ 3.5 ວິນາທີ</div>
+            <div class="ff"><div class="ffl">Bot Token (HTTP API)</div><input class="ffi" id="tg-token" placeholder="738128421:AAHxxxx•••••••••••••"></div>
+            <div class="ff"><div class="ffl">Chat ID / Group ID</div><input class="ffi" id="tg-chatid" placeholder="-1001584219902"></div>
+            <div class="ff"><div class="ffl">ວິທີການເຊື່ອມຕໍ່</div><input class="ffi" value="Polling (getUpdates)" readonly style="background: rgba(0,0,0,0.05); color: var(--text-secondary);"></div>
+            <button class="btn bp" style="width:100%;margin-top:8px" onclick="updateTelegramAPI()">ອັບເດດ ແລະ ເລີ່ມ Polling</button>
           </div>
           <div class="sk">
             <div class="sktl">
@@ -1095,7 +1095,8 @@ var ITEMS=[
 function doConfirm(){
   buildSupplierForm();
   document.getElementById('smw').classList.add('on');
-  document.getElementById('cacts').style.display='none';
+  var cacts = document.getElementById('cacts');
+  if (cacts) cacts.style.display='none';
 }
 
 function buildSupplierForm(){
@@ -1142,7 +1143,8 @@ function saveSup(){
 }
 
 function doEdit(){
-  document.getElementById('cacts').style.display='none';
+  var cacts = document.getElementById('cacts');
+  if (cacts) cacts.style.display='none';
   addMsg('in','ແກ້ໄຂ','10:33');
   setTimeout(function(){
     addMsg('out',
@@ -1174,9 +1176,9 @@ function sendMsg(){
   var l=val.toLowerCase();
   setTimeout(function(){
     if(l==='ຢືນຢັນ'||l==='yes'||l==='confirm'||l==='ok'){
-      addMsg('out','<i class="ti ti-check"></i> ຮັບຄຳຢືນຢັນຈາກ Telegram — ກາລຸນາກວດສອບ ແລ້ວກົດ "ບັນທຶກ → La Dolce"');
+      addMsg('out','<i class="ti ti-check"></i> ຮັບຄຳຢືນຢັນ — ກາລຸນາກວດສອບ ແລ້ວກົດ "ບັນທຶກ → La Dolce"');
     } else {
-      addMsg('out','<i class="ti ti-scan" style="font-size:14px"></i> ຮັບໃບບິນຜ່ານ Telegram — ກຳລັງ OCR ກວດສອບ...<br><span style="font-size:11px;color:rgba(255,255,255,0.8)">ຈະຂໍຢືນຢັນໃນໄລຍະສັ້ນ</span>');
+      addMsg('out','🤖 ໄດ້ຮັບຂໍ້ຄວາມ: "' + val + '"<br><span style="font-size:11px;color:rgba(255,255,255,0.7)">ຫາກຕ້ອງການທົດສອບລະບົບ Polling ແທ້, ກະລຸນາເຊື່ອມຕໍ່ Token ຂອງທ່ານໃນໜ້າ API Settings ແລ້ວສົ່ງຮູບພາບເຂົ້າມາຫາ Bot</span>', 'ດຽວນີ້');
     }
   },700);
 }
@@ -1199,15 +1201,156 @@ function showToast(msg, type) {
   }, 3500);
 }
 
-/* TELEGRAM API UPDATE CHECK */
+
+/* --- REAL-TIME TELEGRAM POLLING SYSTEM (getUpdates) --- */
+
+var TG_TOKEN = '';
+var TG_CHAT_ID = '';
+var pollingInterval = null;
+var lastUpdateId = 0;
+var firstPoll = true;
+
+// Load Saved Bot settings on window load
+window.addEventListener('load', function() {
+  var savedToken = localStorage.getItem('tg_token');
+  var savedChatId = localStorage.getItem('tg_chatid');
+  if (savedToken && savedChatId) {
+    document.getElementById('tg-token').value = savedToken;
+    document.getElementById('tg-chatid').value = savedChatId;
+    TG_TOKEN = savedToken;
+    TG_CHAT_ID = savedChatId;
+    startPolling();
+  }
+});
+
 function updateTelegramAPI() {
   var token = document.getElementById('tg-token').value.trim();
   var chatid = document.getElementById('tg-chatid').value.trim();
   
   if (!token || !chatid) {
     showToast('ອັບເດດຜິດພາດ: ກະລຸນາປ້ອນຂໍ້ມູນ Bot Token ແລະ Chat ID ໃຫ້ຄົບຖ້ວນ!', 'error');
-  } else {
-    showToast('ອັບເດດສຳເລັດ: ເຊື່ອມຕໍ່ Telegram Bot API ຮຽບຮ້ອຍແລ້ວ!', 'success');
+    return;
+  }
+  
+  TG_TOKEN = token;
+  TG_CHAT_ID = chatid;
+  localStorage.setItem('tg_token', TG_TOKEN);
+  localStorage.setItem('tg_chatid', TG_CHAT_ID);
+  
+  showToast('ອັບເດດສຳເລັດ: ກຳລັງເລີ່ມຕົ້ນລະບົບ Polling...', 'success');
+  
+  // Restart polling
+  firstPoll = true;
+  startPolling();
+}
+
+function startPolling() {
+  if (pollingInterval) clearInterval(pollingInterval);
+  
+  // Update Topbar and Badges status
+  document.querySelector('.wb').innerHTML = '<div class="wd" style="background:var(--accent)"></div><i class="ti ti-brand-telegram" style="font-size:13px"></i> Polling ເຮັດວຽກ';
+  var badge = document.getElementById('badge-polling');
+  if(badge) {
+    badge.textContent = 'Polling ເຮັດວຽກ';
+    badge.style.background = 'var(--accent-light)';
+    badge.style.color = 'var(--accent)';
+  }
+  var status = document.getElementById('polling-status');
+  if(status) {
+    status.textContent = 'Telegram API · Polling ເຮັດວຽກ';
+  }
+
+  pollingInterval = setInterval(function() {
+    if (!TG_TOKEN) return;
+    
+    var url = 'https://api.telegram.org/bot' + TG_TOKEN + '/getUpdates?offset=' + (lastUpdateId + 1) + '&limit=5&timeout=2';
+    
+    fetch(url)
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.ok && data.result.length > 0) {
+          var latestUpdate = data.result[data.result.length - 1];
+          
+          if (firstPoll) {
+            // First run: just catch up to the latest update_id to avoid spamming old history
+            lastUpdateId = latestUpdate.update_id;
+            firstPoll = false;
+            console.log('Polling started. Caught up to update_id:', lastUpdateId);
+            return;
+          }
+          
+          data.result.forEach(function(update) {
+            if (update.update_id > lastUpdateId) {
+              lastUpdateId = update.update_id;
+              handleTelegramUpdate(update);
+            }
+          });
+        }
+      })
+      .catch(function(err) {
+        console.error('Polling error:', err);
+      });
+  }, 3500);
+}
+
+function handleTelegramUpdate(update) {
+  var msg = update.message || update.channel_post;
+  if (!msg) return;
+  
+  var fromName = msg.from ? msg.from.first_name : 'User';
+  var timeStr = new Date(msg.date * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+  
+  // 1. Process Text Message
+  if (msg.text) {
+    var text = msg.text.trim();
+    addMsg('in', '<strong>' + fromName + ':</strong> ' + text, timeStr);
+    
+    var l = text.toLowerCase();
+    if (l === 'ຢືນຢັນ' || l === 'yes' || l === 'confirm' || l === 'ok') {
+      addMsg('out', '<i class="ti ti-check"></i> ຮັບຄຳຢືນຢັນຈາກ Telegram — ກຳລັງສົ່ງຂໍ້ມູນເຂົ້າ La Dolce...', 'ດຽວນີ້');
+      setTimeout(function() {
+        doConfirm();
+      }, 1000);
+    } else {
+      setTimeout(function() {
+        addMsg('out', '🤖 ໄດ້ຮັບຂໍ້ຄວາມ: "' + text + '"<br><span style="font-size:11px;color:rgba(255,255,255,0.7)">ຫາກຕ້ອງການສົ່ງໃບບິນ, ກະລຸນາສົ່ງເປັນ "ຮູບພາບ (Photo)" ມາທີ່ Bot ນີ້</span>', 'ດຽວນີ້');
+      }, 1000);
+    }
+  }
+  
+  // 2. Process Photo Message (Receipt)
+  if (msg.photo) {
+    addMsg('in', '<i class="ti ti-photo" style="font-size:14px"></i> [ຮູບພາບໃບບິນຈາກ ' + fromName + ']', timeStr);
+    
+    // Show OCR loading state
+    addMsg('out', '<i class="ti ti-scan" style="font-size:14px"></i> ໄດ້ຮັບໃບບິນຜ່ານ Telegram — ກຳລັງ OCR ປະມວນຜົນ...', 'ດຽວນີ້');
+    
+    setTimeout(function() {
+      // Remove older confirm buttons if any
+      var oldCacts = document.getElementById('cacts');
+      if (oldCacts) oldCacts.style.display = 'none';
+      
+      // Inject Mocked OCR Table results
+      var html = 
+        '<div style="font-size:11px;color:rgba(255,255,255,0.85);margin-bottom:6px"><i class="ti ti-building-store" style="font-size:12px"></i> ຮ້ານ: <strong>Macro Vientiane</strong> · ກວດສອບສຳເລັດ</div>' +
+        '<table class="ct2">' +
+          '<thead><tr><th>ສິນຄ້າ</th><th style="text-align:right">ຈຳນວນ</th><th style="text-align:right">ລາຄາລວມ</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td>ໄຂ່ໄກ່</td><td class="nr">30 ໜ່ວຍ</td><td class="nr">₭90,000</td></tr>' +
+            '<tr><td>ໝາກເລັ່ນ</td><td class="nr">2 kg</td><td class="nr">₭60,000</td></tr>' +
+            '<tr><td>ນ້ຳຕານ</td><td class="nr">5 kg</td><td class="nr">₭85,000</td></tr>' +
+            '<tr><td>ກາເຟ Nescafe</td><td class="nr">2 ກ່ອງ</td><td class="nr">₭150,000</td></tr>' +
+            '<tr class="tot"><td colspan="2">ລວມທັງໝົດ</td><td class="nr">₭385,000</td></tr>' +
+          '</tbody>' +
+        '</table>' +
+        '<div style="font-size:12px;color:rgba(255,255,255,0.9);margin-bottom:8px">ຂໍ້ມູນຂ້າງເທິງຖືກຕ້ອງບໍ? (ພິມ "ຢືນຢັນ" ຫຼື ກົດປຸ່ມ)</div>' +
+        '<div class="cacts" id="cacts">' +
+          '<button class="btn bg2" onclick="doConfirm()"><i class="ti ti-check"></i> ຢືນຢັນ</button>' +
+          '<button class="btn bred" onclick="doEdit()"><i class="ti ti-edit"></i> ແກ້ໄຂ</button>' +
+        '</div>';
+      
+      addMsg('out', html, 'ດຽວນີ້');
+    }, 3000);
   }
 }
 
